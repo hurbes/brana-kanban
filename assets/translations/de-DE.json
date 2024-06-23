@@ -19,6 +19,10 @@
     "default_title": "Brana",
     "brana_subtitle": "Beste Plattform zum Erstellen von To-Do-Listen",
     "history_subtitle": "Finden Sie hier alle Ihre abgeschlossenen Aufgaben",
-    "default_subtitle": "Willkommen bei Brana"
+    "default_subtitle": "Willkommen bei Brana",
+    "settings_title": "Einstellungen",
+    "settings_language": "Sprache",
+    "tasks": "Aufgaben",
+    "history": "Geschichte"
   }
   

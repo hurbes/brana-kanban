@@ -1,0 +1,28 @@
+{
+    "comments": "মন্তব্য",
+    "add_comment_hint": "একটি মন্তব্য যোগ করুন",
+    "add_task": "কাজ যোগ করুন",
+    "sweet_title_hint": "একটি মিষ্টি শিরোনাম",
+    "description_hint": "একটি বিবরণ",
+    "save": "সংরক্ষণ করুন",
+    "create_todo_list": "একটি টু-ডু লিস্ট তৈরি করুন",
+    "edit_board_title": "বোর্ড সম্পাদনা করুন",
+    "edit_board_description": "আপনি কি করতে চান?",
+    "edit_button": "সম্পাদনা করুন",
+    "delete_button": "মুছে ফেলুন",
+    "delete_confirmation_title": "মুছে ফেলুন!",
+    "delete_confirmation_description": "আপনি কি সত্যিই এই বোর্ডটি মুছে ফেলতে চান?",
+    "cancel_button": "বাতিল করুন",
+    "no_tasks_found": "কোন কাজ পাওয়া যায়নি",
+    "brana_title": "ব্রানা",
+    "history_title": "ইতিহাস",
+    "default_title": "ব্রানা",
+    "brana_subtitle": "টু-ডু লিস্ট তৈরি করার সেরা প্ল্যাটফর্ম",
+    "history_subtitle": "এখানে আপনার সমস্ত সম্পন্ন কাজগুলি খুঁজুন",
+    "default_subtitle": "ব্রানাতে স্বাগতম",
+    "settings_title": "সেটিংস",
+    "settings_language": "ভাষা",
+    "tasks": "কাজ",
+    "history": "ইতিহাস"
+  }
+  

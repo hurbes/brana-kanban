@@ -1,6 +1,8 @@
 import 'package:animations/animations.dart';
+import 'package:brana/ui/common/ui_helpers.dart';
 import 'package:brana/ui/views/history/history_view.dart';
 import 'package:brana/ui/views/home/home_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -24,14 +26,14 @@ class ParentView extends StackedView<ParentViewModel> {
         type: BottomNavigationBarType.fixed,
         currentIndex: viewModel.currentIndex,
         onTap: viewModel.setIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            label: 'Tasks',
-            icon: Icon(CupertinoIcons.table_badge_more),
+            label: 'tasks'.tr(),
+            icon: const Icon(CupertinoIcons.table_badge_more),
           ),
           BottomNavigationBarItem(
-            label: 'History',
-            icon: Icon(CupertinoIcons.time),
+            label: 'history'.tr(),
+            icon: const Icon(CupertinoIcons.time),
           ),
         ],
       ),
@@ -91,13 +93,19 @@ class _ParentAppBar extends ViewModelWidget<ParentViewModel>
       title: ListTile(
         title: Text(
           viewModel.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(bottom: 10.0, top: 5.0),
-          child: Text(
-            viewModel.subtitle,
-            style: const TextStyle(fontSize: 16),
+          child: SizedBox(
+            width: screenWidthFraction(context, dividedBy: 2),
+            child: Text(
+              viewModel.subtitle,
+              maxLines: 1,
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
         ),
       ),

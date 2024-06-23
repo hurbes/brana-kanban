@@ -1,8 +1,15 @@
+import 'package:brana/app/app.locator.dart';
+import 'package:brana/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class ParentViewModel extends IndexTrackingViewModel {
-  void navigateToSettings() {}
+  final _routerService = locator<RouterService>();
+
+  void navigateToSettings() {
+    _routerService.navigateToSettingsView();
+  }
 
   String get title {
     switch (currentIndex) {
