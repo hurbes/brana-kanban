@@ -5,6 +5,7 @@ import 'package:brana/ui/widgets/kanban/brana_kanban_item.dart';
 import 'package:brana/ui/widgets/kanban/brana_kanban_list.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'kanban_viewmodel.dart';
 
@@ -39,9 +40,9 @@ class KanbanView extends StackedView<KanbanViewModel> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: viewModel.openAddTaskBoardSheet,
         backgroundColor: const Color(0xff24A19C),
-        label: const Text(
-          'Add Task',
-          style: TextStyle(color: Colors.white),
+        label: Text(
+          'add_task'.tr(),
+          style: const TextStyle(color: Colors.white),
         ),
         icon: const Icon(Icons.add, color: Colors.white),
       ),
@@ -63,8 +64,8 @@ class KanbanView extends StackedView<KanbanViewModel> {
           axis: Axis.horizontal,
           itemDragOnLongPress: true,
           addLastItemTargetHeightToTop: false,
-          contentsWhenEmpty: const Center(
-            child: Text('No Tasks Found'),
+          contentsWhenEmpty: Center(
+            child: Text('no_tasks_found'.tr()),
           ),
           listDividerOnLastChild: true,
           itemDivider: verticalSpaceSmall,

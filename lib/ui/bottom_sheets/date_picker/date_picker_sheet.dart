@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'date_picker_sheet_model.dart';
 
@@ -52,7 +53,7 @@ class DatePickerSheet extends StackedView<DatePickerSheetModel> {
           ),
           AppButton(
             height: 45,
-            title: 'Save',
+            title: 'save'.tr(),
             onPressed: viewModel.save,
             enabled: viewModel.hasSelectedDate,
             width: screenWidthFraction(context, dividedBy: 1, offsetBy: 80),

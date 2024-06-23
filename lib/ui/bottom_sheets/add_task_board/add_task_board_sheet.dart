@@ -6,6 +6,7 @@ import 'package:brana/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'add_task_board_sheet.form.dart';
 import 'add_task_board_sheet_model.dart';
@@ -77,7 +78,7 @@ class _TaskBoardForm extends ViewModelWidget<AddTaskBoardSheetModel> {
           autofocus: true,
           controller: titleController,
           decoration: InputDecoration(
-            hintText: 'A Sweet Title',
+            hintText: 'sweet_title_hint'.tr(),
             border: InputBorder.none,
             hintStyle: TextStyle(
               color: Colors.grey[400],
@@ -89,7 +90,7 @@ class _TaskBoardForm extends ViewModelWidget<AddTaskBoardSheetModel> {
           autofocus: true,
           controller: descriptionController,
           decoration: InputDecoration(
-            hintText: 'Some description',
+            hintText: 'description_hint'.tr(),
             border: InputBorder.none,
             hintStyle: TextStyle(
               color: Colors.grey[400],

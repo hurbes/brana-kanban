@@ -1,4 +1,5 @@
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ParentViewModel extends IndexTrackingViewModel {
   void navigateToSettings() {}
@@ -6,22 +7,22 @@ class ParentViewModel extends IndexTrackingViewModel {
   String get title {
     switch (currentIndex) {
       case 0:
-        return 'Brana';
+        return 'brana_title'.tr();
       case 1:
-        return 'History';
+        return 'history_title'.tr();
       default:
-        return 'Brana';
+        return 'default_title'.tr();
     }
   }
 
   String get subtitle {
     switch (currentIndex) {
       case 0:
-        return 'Best platform for creating to-do lists';
+        return 'brana_subtitle'.tr();
       case 1:
-        return 'Find all your completed tasks here';
+        return 'history_subtitle'.tr();
       default:
-        return 'Welcome to Brana';
+        return 'default_subtitle'.tr();
     }
   }
 }

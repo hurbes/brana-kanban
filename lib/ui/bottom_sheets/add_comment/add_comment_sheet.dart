@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'add_comment_sheet_model.dart';
 
@@ -52,9 +53,9 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                       color: Colors.grey[600],
                     ),
                   ),
-                  const Text(
-                    'Comments',
-                    style: TextStyle(
+                  Text(
+                    'comments'.tr(),
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
@@ -91,7 +92,7 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                   controller: commentController,
                   focusNode: commentFocusNode,
                   decoration: InputDecoration(
-                    hintText: 'Add a comment',
+                    hintText: 'add_comment_hint'.tr(),
                     suffixIcon: GestureDetector(
                       onTap: () async {
                         await viewModel.addComment();

@@ -2,6 +2,7 @@ import 'package:brana/ui/common/ui_helpers.dart';
 import 'package:brana/ui/widgets/common/task_board_item/task_board_item.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'home_viewmodel.dart';
 
@@ -37,10 +38,10 @@ class _TaskBoardList extends ViewModelWidget<HomeViewModel> {
       return ListView(
         children: [
           verticalSpaceLarge,
-          const Center(
+          Center(
             child: Text(
-              'Create to do list',
-              style: TextStyle(fontSize: 24),
+              'create_todo_list'.tr(),
+              style: const TextStyle(fontSize: 24),
             ),
           ),
           Center(child: Image.asset('assets/home/empty_home.png')),

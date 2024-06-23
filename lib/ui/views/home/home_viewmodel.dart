@@ -6,16 +6,14 @@ import 'package:brana/core/mixins/app_logger.dart';
 import 'package:brana/core/services/notification_service.dart';
 import 'package:brana/core/services/task_service.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class HomeViewModel extends FutureViewModel<List<TaskBoard>> with AppLogger {
   final _routerService = locator<RouterService>();
-
   final _notificationService = locator<NotificationService>();
   final _bottomSheetService = locator<BottomSheetService>();
-
   final _taskService = locator<TaskService>();
 
   int get taskBoardCount => data?.length ?? 0;
@@ -44,10 +42,10 @@ class HomeViewModel extends FutureViewModel<List<TaskBoard>> with AppLogger {
 
   Future<void> longPressTaskBoard(TaskBoard taskBoard) async {
     final result = await _bottomSheetService.showBottomSheet(
-      title: 'Edit Board',
-      description: 'What would you like to do?',
-      confirmButtonTitle: 'Edit',
-      cancelButtonTitle: 'Delete',
+      title: 'edit_board_title'.tr(),
+      description: 'edit_board_description'.tr(),
+      confirmButtonTitle: 'edit_button'.tr(),
+      cancelButtonTitle: 'delete_button'.tr(),
     );
     if (result == null) return;
 
@@ -72,10 +70,10 @@ class HomeViewModel extends FutureViewModel<List<TaskBoard>> with AppLogger {
   @visibleForTesting
   Future<void> deleteTaskBoard(TaskBoard taskBoard) async {
     final result = await _bottomSheetService.showBottomSheet(
-      title: 'Delete!',
-      description: 'Are you sure you want to delete this board?',
-      confirmButtonTitle: 'Delete',
-      cancelButtonTitle: 'Cancel',
+      title: 'delete_confirmation_title'.tr(),
+      description: 'delete_confirmation_description'.tr(),
+      confirmButtonTitle: 'delete_button'.tr(),
+      cancelButtonTitle: 'cancel_button'.tr(),
     );
 
     if (result == null) result;

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:brana/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'add_task_sheet_model.dart';
 
@@ -67,9 +68,9 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Add Task',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              'add_task'.tr(),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             IconButton(
               onPressed: viewModel.closeSheet,
@@ -80,11 +81,11 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
         TextField(
           autofocus: true,
           onChanged: viewModel.setTitle,
-          decoration: const InputDecoration(
-            hintText: 'A Sweet Title',
+          decoration: InputDecoration(
+            hintText: 'sweet_title_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: TextStyle(color: Colors.grey),
-            prefixIcon: Padding(
+            hintStyle: const TextStyle(color: Colors.grey),
+            prefixIcon: const Padding(
               padding: EdgeInsets.only(bottom: 8.0),
               child: Icon(
                 CupertinoIcons.tag_circle_fill,
@@ -96,11 +97,11 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
         TextField(
           autofocus: true,
           onChanged: viewModel.setDescription,
-          decoration: const InputDecoration(
-            hintText: 'Some description',
+          decoration: InputDecoration(
+            hintText: 'description_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: TextStyle(color: Colors.grey),
-            prefixIcon: SizedBox.shrink(),
+            hintStyle: const TextStyle(color: Colors.grey),
+            prefixIcon: const SizedBox.shrink(),
           ),
         ),
         Padding(
