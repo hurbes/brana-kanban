@@ -7,15 +7,13 @@ class EmojiRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣'].map((e) {
         return GestureDetector(
           onTap: () => onChange(e),
-          child: Text(
-            e,
-            style: const TextStyle(fontSize: 30),
-          ),
+          child: Text(e, style: theme.textTheme.titleLarge),
         );
       }).toList(),
     );

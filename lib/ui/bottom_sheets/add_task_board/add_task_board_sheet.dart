@@ -14,7 +14,6 @@ import 'add_task_board_sheet_model.dart';
 @FormView(fields: [
   FormTextField(name: 'title'),
   FormTextField(name: 'description'),
-  FormDateField(name: 'date'),
 ])
 class AddTaskBoardSheet extends StackedView<AddTaskBoardSheetModel>
     with $AddTaskBoardSheet {
@@ -32,12 +31,13 @@ class AddTaskBoardSheet extends StackedView<AddTaskBoardSheetModel>
     AddTaskBoardSheetModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Align(
       alignment: Alignment.bottomCenter,
       child: AnimatedContainer(
         height: 220,
         duration: const Duration(milliseconds: 100),
-        color: Colors.white,
+        color: theme.cardColor,
         child: _TaskBoardForm(
           titleController: titleController,
           descriptionController: descriptionController,
@@ -71,31 +71,28 @@ class _TaskBoardForm extends ViewModelWidget<AddTaskBoardSheetModel> {
 
   @override
   Widget build(BuildContext context, AddTaskBoardSheetModel viewModel) {
+    final theme = Theme.of(context);
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       children: [
         TextFormField(
           autofocus: true,
           controller: titleController,
+          style: theme.textTheme.headlineMedium,
           decoration: InputDecoration(
             hintText: 'sweet_title_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: TextStyle(
-              color: Colors.grey[400],
-              fontWeight: FontWeight.w400,
-            ),
+            hintStyle: theme.textTheme.headlineMedium,
           ),
         ),
         TextFormField(
           autofocus: true,
+          style: theme.textTheme.headlineMedium,
           controller: descriptionController,
           decoration: InputDecoration(
             hintText: 'description_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: TextStyle(
-              color: Colors.grey[400],
-              fontWeight: FontWeight.w400,
-            ),
+            hintStyle: theme.textTheme.headlineMedium,
           ),
         ),
         verticalSpaceSmall,

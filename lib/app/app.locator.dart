@@ -11,12 +11,11 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/router_service.dart';
 import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
+import 'package:stacked_themes/src/theme_service.dart';
 
 import '../core/database/repository/task_repository.dart';
 import '../core/services/analytics_service.dart';
-import '../core/services/brana_app_theme_service.dart';
 import '../core/services/date_formater.dart';
-import '../core/services/device_local_service.dart';
 import '../core/services/notification_service.dart';
 import '../core/services/shared_preferences_service.dart';
 import '../core/services/task_service.dart';
@@ -49,13 +48,9 @@ Future<void> setupLocator({
   await taskRepository.init();
   locator.registerSingleton(taskRepository);
 
-  final branaAppThemeService = BranaAppThemeService();
-  await branaAppThemeService.init();
-  locator.registerSingleton(branaAppThemeService);
-
   locator.registerLazySingleton(() => TaskService());
   locator.registerLazySingleton(() => DateFormatter());
-  locator.registerLazySingleton(() => DeviceLocalService());
+  locator.registerLazySingleton(() => ThemeService.getInstance());
   locator.registerLazySingleton(() => KanbanItemModel());
   if (stackedRouter == null) {
     throw Exception(

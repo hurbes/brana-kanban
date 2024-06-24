@@ -19,10 +19,8 @@ class ParentView extends StackedView<ParentViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: const Color(0xffF6F7F9),
       appBar: const _ParentAppBar(),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         currentIndex: viewModel.currentIndex,
         onTap: viewModel.setIndex,
@@ -81,13 +79,14 @@ class _ParentAppBar extends ViewModelWidget<ParentViewModel>
 
   @override
   Widget build(BuildContext context, ParentViewModel viewModel) {
+    final theme = Theme.of(context);
     return AppBar(
       elevation: 0,
       centerTitle: false,
       actions: [
         IconButton(
           onPressed: viewModel.navigateToSettings,
-          icon: const Icon(Icons.settings, color: Colors.grey),
+          icon: const Icon(Icons.settings),
         ),
       ],
       title: ListTile(
@@ -95,7 +94,7 @@ class _ParentAppBar extends ViewModelWidget<ParentViewModel>
           viewModel.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+          style: theme.textTheme.headlineMedium,
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(bottom: 10.0, top: 5.0),
@@ -104,7 +103,7 @@ class _ParentAppBar extends ViewModelWidget<ParentViewModel>
             child: Text(
               viewModel.subtitle,
               maxLines: 1,
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.labelMedium,
             ),
           ),
         ),

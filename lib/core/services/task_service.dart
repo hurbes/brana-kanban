@@ -35,26 +35,29 @@ class TaskService with AppLogger {
     return _repository.getTasks(boardId);
   }
 
-  Future<void> addTask({
+  Future<int> addTask({
     required int boardId,
     required String title,
     required String description,
     required int prevIndex,
     required TaskPriority priority,
+    required DateTime? dueDate,
   }) async {
+    final id = adjustTo32BitInt(DateTime.now().microsecondsSinceEpoch);
     final task = Task(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: id,
       boardId: boardId,
       title: title,
       description: description,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
-      dueDate: DateTime.now(),
+      dueDate: dueDate,
       prevTaskId: prevIndex,
       priority: priority,
       status: TaskStatus.todo,
     );
     await _repository.addTask(task);
+    return id;
   }
 
   Future<void> updateTaskBoard(TaskBoard board) async {

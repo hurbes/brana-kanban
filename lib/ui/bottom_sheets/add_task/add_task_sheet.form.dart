@@ -14,18 +14,17 @@ const bool _autoTextFieldValidation = true;
 const String TitleValueKey = 'title';
 const String DescriptionValueKey = 'description';
 
-final Map<String, TextEditingController>
-    _AddTaskBoardSheetTextEditingControllers = {};
+final Map<String, TextEditingController> _AddTaskSheetTextEditingControllers =
+    {};
 
-final Map<String, FocusNode> _AddTaskBoardSheetFocusNodes = {};
+final Map<String, FocusNode> _AddTaskSheetFocusNodes = {};
 
-final Map<String, String? Function(String?)?>
-    _AddTaskBoardSheetTextValidations = {
+final Map<String, String? Function(String?)?> _AddTaskSheetTextValidations = {
   TitleValueKey: null,
   DescriptionValueKey: null,
 };
 
-mixin $AddTaskBoardSheet {
+mixin $AddTaskSheet {
   TextEditingController get titleController =>
       _getFormTextEditingController(TitleValueKey);
   TextEditingController get descriptionController =>
@@ -38,21 +37,21 @@ mixin $AddTaskBoardSheet {
     String key, {
     String? initialValue,
   }) {
-    if (_AddTaskBoardSheetTextEditingControllers.containsKey(key)) {
-      return _AddTaskBoardSheetTextEditingControllers[key]!;
+    if (_AddTaskSheetTextEditingControllers.containsKey(key)) {
+      return _AddTaskSheetTextEditingControllers[key]!;
     }
 
-    _AddTaskBoardSheetTextEditingControllers[key] =
+    _AddTaskSheetTextEditingControllers[key] =
         TextEditingController(text: initialValue);
-    return _AddTaskBoardSheetTextEditingControllers[key]!;
+    return _AddTaskSheetTextEditingControllers[key]!;
   }
 
   FocusNode _getFormFocusNode(String key) {
-    if (_AddTaskBoardSheetFocusNodes.containsKey(key)) {
-      return _AddTaskBoardSheetFocusNodes[key]!;
+    if (_AddTaskSheetFocusNodes.containsKey(key)) {
+      return _AddTaskSheetFocusNodes[key]!;
     }
-    _AddTaskBoardSheetFocusNodes[key] = FocusNode();
-    return _AddTaskBoardSheetFocusNodes[key]!;
+    _AddTaskSheetFocusNodes[key] = FocusNode();
+    return _AddTaskSheetFocusNodes[key]!;
   }
 
   /// Registers a listener on every generated controller that calls [model.setData()]
@@ -101,15 +100,15 @@ mixin $AddTaskBoardSheet {
   void disposeForm() {
     // The dispose function for a TextEditingController sets all listeners to null
 
-    for (var controller in _AddTaskBoardSheetTextEditingControllers.values) {
+    for (var controller in _AddTaskSheetTextEditingControllers.values) {
       controller.dispose();
     }
-    for (var focusNode in _AddTaskBoardSheetFocusNodes.values) {
+    for (var focusNode in _AddTaskSheetFocusNodes.values) {
       focusNode.dispose();
     }
 
-    _AddTaskBoardSheetTextEditingControllers.clear();
-    _AddTaskBoardSheetFocusNodes.clear();
+    _AddTaskSheetTextEditingControllers.clear();
+    _AddTaskSheetFocusNodes.clear();
   }
 }
 
@@ -134,9 +133,8 @@ extension ValueProperties on FormStateHelper {
       this.formValueMap..addAll({TitleValueKey: value}),
     );
 
-    if (_AddTaskBoardSheetTextEditingControllers.containsKey(TitleValueKey)) {
-      _AddTaskBoardSheetTextEditingControllers[TitleValueKey]?.text =
-          value ?? '';
+    if (_AddTaskSheetTextEditingControllers.containsKey(TitleValueKey)) {
+      _AddTaskSheetTextEditingControllers[TitleValueKey]?.text = value ?? '';
     }
   }
 
@@ -145,9 +143,8 @@ extension ValueProperties on FormStateHelper {
       this.formValueMap..addAll({DescriptionValueKey: value}),
     );
 
-    if (_AddTaskBoardSheetTextEditingControllers.containsKey(
-        DescriptionValueKey)) {
-      _AddTaskBoardSheetTextEditingControllers[DescriptionValueKey]?.text =
+    if (_AddTaskSheetTextEditingControllers.containsKey(DescriptionValueKey)) {
+      _AddTaskSheetTextEditingControllers[DescriptionValueKey]?.text =
           value ?? '';
     }
   }
@@ -193,11 +190,11 @@ extension Methods on FormStateHelper {
 
 /// Returns the validation message for the given key
 String? getValidationMessage(String key) {
-  final validatorForKey = _AddTaskBoardSheetTextValidations[key];
+  final validatorForKey = _AddTaskSheetTextValidations[key];
   if (validatorForKey == null) return null;
 
   String? validationMessageForKey = validatorForKey(
-    _AddTaskBoardSheetTextEditingControllers[key]!.text,
+    _AddTaskSheetTextEditingControllers[key]!.text,
   );
 
   return validationMessageForKey;

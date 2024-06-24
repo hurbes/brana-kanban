@@ -23,5 +23,6 @@
     "settings_title": "Settings",
     "settings_language": "Language",
     "tasks": "Tasks",
-    "history": "History"
+    "history": "History",
+    "settings_theme": "Theme"
 }

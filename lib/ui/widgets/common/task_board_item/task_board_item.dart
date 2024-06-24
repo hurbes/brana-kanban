@@ -26,15 +26,16 @@ class TaskBoardItem extends StackedView<TaskBoardItemModel> {
     TaskBoardItemModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      child: Ink(
+      child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme.cardColor,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: theme.shadowColor.withOpacity(0.2),
               spreadRadius: 1,
               blurRadius: 5,
             ),
@@ -53,7 +54,7 @@ class TaskBoardItem extends StackedView<TaskBoardItemModel> {
                 child: Divider(
                   thickness: .5,
                   height: 1,
-                  color: Colors.grey.shade300,
+                  color: theme.primaryColorLight.withOpacity(0.3),
                 ),
               ),
               Padding(
@@ -69,7 +70,7 @@ class TaskBoardItem extends StackedView<TaskBoardItemModel> {
                     ),
                     Text(
                       viewModel.getCreateAtDate,
-                      style: const TextStyle(color: Colors.grey, fontSize: 10),
+                      style: theme.textTheme.labelSmall,
                     ),
                   ],
                 ),
@@ -94,13 +95,14 @@ class _CommentCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
-        const Icon(CupertinoIcons.table, color: Colors.grey, size: 16),
+        Icon(CupertinoIcons.table, size: 16, color: theme.primaryColorLight),
         horizontalSpaceTiny,
         Text(
           '$taskCount',
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
+          style: theme.textTheme.labelSmall,
         )
       ],
     );
@@ -122,20 +124,20 @@ class _DueDateTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         if (showTime) ...[
           Icon(
             CupertinoIcons.clock,
-            color: isReminder ? Colors.redAccent : Colors.grey[600],
+            color: isReminder ? Colors.redAccent : theme.primaryColorLight,
             size: 16,
           ),
           horizontalSpaceTiny,
           Text(
             dueDate,
-            style: TextStyle(
-              fontSize: 12,
-              color: isReminder ? Colors.redAccent : Colors.grey[600],
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: isReminder ? Colors.redAccent : theme.primaryColorLight,
             ),
           ),
           horizontalSpaceSmall,
@@ -153,6 +155,7 @@ class _TaskBoardDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
@@ -164,14 +167,7 @@ class _TaskBoardDescription extends StatelessWidget {
             size: 16,
           ),
           horizontalSpaceTiny,
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-            ),
-          )
+          Text(description, style: theme.textTheme.bodyMedium)
         ],
       ),
     );
@@ -186,6 +182,7 @@ class _TaskBoardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: 36,
       width: double.infinity,
@@ -193,18 +190,18 @@ class _TaskBoardTitle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: headerColor,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(8),
           topRight: Radius.circular(8),
         ),
       ),
       child: Row(
         children: [
-          const Icon(CupertinoIcons.flag, color: Colors.white, size: 16),
+          const Icon(CupertinoIcons.flag, color: Colors.black, size: 16),
           horizontalSpaceTiny,
           Text(
             title,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: theme.textTheme.headlineSmall,
           ),
         ],
       ),

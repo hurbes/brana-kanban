@@ -1,6 +1,5 @@
 import 'package:brana/core/database/repository/task_repository.dart';
 import 'package:brana/core/services/date_formater.dart';
-import 'package:brana/core/services/device_local_service.dart';
 import 'package:brana/core/services/shared_preferences_service.dart';
 import 'package:brana/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:brana/ui/dialogs/info_alert/info_alert_dialog.dart';
@@ -23,7 +22,7 @@ import 'package:brana/ui/views/parent/parent_view.dart';
 import 'package:brana/ui/bottom_sheets/add_comment/add_comment_sheet.dart';
 import 'package:brana/ui/views/history/history_view.dart';
 import 'package:brana/ui/views/task_history/task_history_view.dart';
-import 'package:brana/core/services/brana_app_theme_service.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 // @stacked-import
 
 @StackedApp(
@@ -52,11 +51,11 @@ import 'package:brana/core/services/brana_app_theme_service.dart';
 
     InitializableSingleton(classType: SharedPreferencesService),
     InitializableSingleton(classType: TaskRepository),
-    InitializableSingleton(classType: BranaAppThemeService),
 
     LazySingleton(classType: TaskService),
     LazySingleton(classType: DateFormatter),
-    LazySingleton(classType: DeviceLocalService),
+    LazySingleton(
+        classType: ThemeService, resolveUsing: ThemeService.getInstance),
 
     // @stacked-service-locator
 

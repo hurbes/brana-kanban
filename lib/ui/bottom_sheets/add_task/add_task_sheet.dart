@@ -5,12 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:brana/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'add_task_sheet.form.dart';
 import 'add_task_sheet_model.dart';
 
-class AddTaskSheet extends StackedView<AddTaskSheetModel> {
+@FormView(fields: [
+  FormTextField(name: 'title'),
+  FormTextField(name: 'description'),
+])
+class AddTaskSheet extends StackedView<AddTaskSheetModel> with $AddTaskSheet {
   final Function(SheetResponse response)? completer;
   final SheetRequest request;
   const AddTaskSheet({
@@ -25,22 +31,31 @@ class AddTaskSheet extends StackedView<AddTaskSheetModel> {
     AddTaskSheetModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Align(
       alignment: Alignment.bottomCenter,
       child: AnimatedContainer(
-        height: 280,
+        height: 340,
         duration: const Duration(milliseconds: 100),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        decoration: BoxDecoration(
+          color: theme.cardColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
         ),
         child: _TaskForm(
           boardId: request.data['boardId'],
           lastIndex: request.data['lastIndex'],
+          titleController: titleController,
+          descriptionController: descriptionController,
           onComplete: () => completer!(SheetResponse(confirmed: true)),
         ),
       ),
     );
+  }
+
+  @override
+  void onDispose(AddTaskSheetModel viewModel) {
+    syncFormWithViewModel(viewModel);
+    super.onDispose(viewModel);
   }
 
   @override
@@ -53,15 +68,20 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
   final int boardId;
   final int lastIndex;
   final VoidCallback onComplete;
+  final TextEditingController titleController;
+  final TextEditingController descriptionController;
 
   const _TaskForm({
     required this.boardId,
     required this.lastIndex,
     required this.onComplete,
+    required this.titleController,
+    required this.descriptionController,
   });
 
   @override
   Widget build(BuildContext context, AddTaskSheetModel viewModel) {
+    final theme = Theme.of(context);
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
@@ -70,37 +90,39 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
           children: [
             Text(
               'add_task'.tr(),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: theme.textTheme.headlineMedium,
             ),
             IconButton(
               onPressed: viewModel.closeSheet,
-              icon: const Icon(CupertinoIcons.xmark, color: Colors.grey),
+              icon: Icon(CupertinoIcons.xmark, color: theme.primaryColorLight),
             ),
           ],
         ),
         TextField(
           autofocus: true,
-          onChanged: viewModel.setTitle,
+          controller: titleController,
+          style: theme.textTheme.headlineMedium,
           decoration: InputDecoration(
             hintText: 'sweet_title_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: const TextStyle(color: Colors.grey),
-            prefixIcon: const Padding(
-              padding: EdgeInsets.only(bottom: 8.0),
+            hintStyle: theme.textTheme.labelLarge,
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
               child: Icon(
                 CupertinoIcons.tag_circle_fill,
-                color: Color(0xff24A19C),
+                color: theme.primaryColor,
               ),
             ),
           ),
         ),
         TextField(
           autofocus: true,
-          onChanged: viewModel.setDescription,
+          style: theme.textTheme.bodyMedium,
+          controller: descriptionController,
           decoration: InputDecoration(
             hintText: 'description_hint'.tr(),
             border: InputBorder.none,
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: theme.textTheme.labelMedium,
             prefixIcon: const SizedBox.shrink(),
           ),
         ),
@@ -113,8 +135,10 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
               const _PriorityRow(),
               verticalSpaceMedium,
               ScheduleRow(
-                onSchedule: () {},
-                onReminder: () {},
+                isScheduled: viewModel.isDateSelected,
+                isReminder: viewModel.isReminderSelected,
+                onSchedule: viewModel.scheduleReminderSheet,
+                onReminder: viewModel.setReminder,
                 onSubmit: () => viewModel.addTask(
                   lastIndex: lastIndex,
                   boardId: boardId,
@@ -125,7 +149,7 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
             ],
           ),
         ),
-        EmojiRow(onChange: viewModel.setEmoji),
+        EmojiRow(onChange: (emoji) => descriptionController.text += emoji),
       ],
     );
   }
@@ -136,6 +160,7 @@ class _PriorityRow extends ViewModelWidget<AddTaskSheetModel> {
 
   @override
   Widget build(BuildContext context, AddTaskSheetModel viewModel) {
+    final theme = Theme.of(context);
     return Wrap(
       spacing: 6,
       children: TaskPriority.values.map((priority) {
@@ -155,7 +180,7 @@ class _PriorityRow extends ViewModelWidget<AddTaskSheetModel> {
             ),
             child: Text(
               '${priority.icon} ${priority.name}',
-              style: const TextStyle(color: Colors.white, fontSize: 10),
+              style: theme.textTheme.labelSmall,
             ),
           ),
         );

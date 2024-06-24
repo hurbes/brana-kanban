@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../common/app_colors.dart';
 import 'notice_sheet_model.dart';
 
 class NoticeSheet extends StackedView<NoticeSheetModel> {
@@ -21,6 +20,7 @@ class NoticeSheet extends StackedView<NoticeSheetModel> {
     NoticeSheetModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: const BoxDecoration(
@@ -34,14 +34,11 @@ class NoticeSheet extends StackedView<NoticeSheetModel> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            request.title!,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
-          ),
+          Text(request.title!, style: theme.textTheme.titleLarge),
           verticalSpaceTiny,
           Text(
             request.description!,
-            style: const TextStyle(fontSize: 14, color: kcMediumGrey),
+            style: theme.textTheme.bodyMedium,
             maxLines: 3,
             softWrap: true,
           ),

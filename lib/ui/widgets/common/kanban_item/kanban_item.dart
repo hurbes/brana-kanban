@@ -24,15 +24,16 @@ class KanbanItem extends StackedView<KanbanItemModel> {
     KanbanItemModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Material(
       elevation: 0.1,
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(8),
-      child: Ink(
+      child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme.cardColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: InkWell(
@@ -40,30 +41,24 @@ class KanbanItem extends StackedView<KanbanItemModel> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                task.title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              Text(task.title, style: theme.textTheme.titleSmall),
               verticalSpaceTiny,
-              Text(task.description),
+              Text(task.description, style: theme.textTheme.bodyMedium),
               verticalSpaceSmall,
               if (task.status == TaskStatus.inProgress)
                 TimeTracker(inProgressAt: task.inProgressAt!),
               if (task.status == TaskStatus.done)
                 Row(
                   children: [
-                    const Icon(
+                    Icon(
                       CupertinoIcons.check_mark_circled,
-                      color: Colors.grey,
+                      color: theme.primaryColorLight,
                       size: 18,
                     ),
                     horizontalSpaceTiny,
                     Text(
                       viewModel.doneTime,
-                      style: const TextStyle(color: Colors.grey),
+                      style: theme.textTheme.bodyMedium,
                     ),
                   ],
                 ),
@@ -73,15 +68,15 @@ class KanbanItem extends StackedView<KanbanItemModel> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Icon(
+                  Icon(
                     CupertinoIcons.text_bubble,
-                    color: Colors.grey,
+                    color: theme.primaryColorLight,
                     size: 18,
                   ),
                   horizontalSpaceTiny,
                   Text(
                     task.commentsCount.toString(),
-                    style: const TextStyle(color: Colors.grey),
+                    style: theme.textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -111,6 +106,7 @@ class _TagRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Container(
@@ -124,10 +120,7 @@ class _TagRow extends StatelessWidget {
           ),
           child: Text(
             task.status.name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 8,
-            ),
+            style: theme.textTheme.labelSmall,
           ),
         ),
         horizontalSpaceTiny,
@@ -139,7 +132,7 @@ class _TagRow extends StatelessWidget {
           ),
           child: Text(
             '${task.priority.icon} ${task.priority.name}',
-            style: const TextStyle(color: Colors.white, fontSize: 8),
+            style: theme.textTheme.labelSmall,
           ),
         ),
       ],

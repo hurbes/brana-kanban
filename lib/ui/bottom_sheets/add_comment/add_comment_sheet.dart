@@ -27,12 +27,13 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
     AddCommentSheetModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Container(
       height: 450,
       padding: const EdgeInsets.all(10),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
@@ -50,16 +51,12 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                     },
                     icon: Icon(
                       CupertinoIcons.back,
-                      color: Colors.grey[600],
+                      color: theme.primaryColorLight,
                     ),
                   ),
                   Text(
                     'comments'.tr(),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                    style: theme.textTheme.headlineMedium,
                   ),
                 ],
               ),
@@ -74,13 +71,11 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                       visualDensity: const VisualDensity(vertical: -4),
                       title: Text(
                         comment.comment,
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.black),
+                        style: theme.textTheme.headlineSmall,
                       ),
                       subtitle: Text(
                         viewModel.getCommentDate(comment.createdAt!),
-                        style:
-                            const TextStyle(fontSize: 12, color: Colors.grey),
+                        style: theme.textTheme.labelSmall,
                       ),
                     );
                   },
@@ -90,9 +85,16 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   controller: commentController,
-                  focusNode: commentFocusNode,
+                  style: TextStyle(
+                    color: theme.primaryColorLight,
+                    fontWeight: FontWeight.w600,
+                  ),
                   decoration: InputDecoration(
                     hintText: 'add_comment_hint'.tr(),
+                    hintStyle: TextStyle(
+                      color: theme.primaryColorLight.withOpacity(0.6),
+                      fontWeight: FontWeight.w400,
+                    ),
                     suffixIcon: GestureDetector(
                       onTap: () async {
                         await viewModel.addComment();
@@ -101,8 +103,8 @@ class AddCommentSheet extends StackedView<AddCommentSheetModel>
                       child: Icon(
                         Icons.send_rounded,
                         color: viewModel.enableSubmit
-                            ? const Color(0xFF00A3FF)
-                            : Colors.grey,
+                            ? theme.primaryColor
+                            : theme.primaryColorLight,
                       ),
                     ),
                   ),

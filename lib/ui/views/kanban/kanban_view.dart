@@ -25,6 +25,7 @@ class KanbanView extends StackedView<KanbanViewModel> {
     KanbanViewModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -35,26 +36,25 @@ class KanbanView extends StackedView<KanbanViewModel> {
         title: Text(title),
         centerTitle: false,
         elevation: 0,
-        backgroundColor: Colors.white,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: viewModel.openAddTaskBoardSheet,
-        backgroundColor: const Color(0xff24A19C),
+        backgroundColor: theme.primaryColor,
         label: Text(
           'add_task'.tr(),
-          style: const TextStyle(color: Colors.white),
+          style: theme.textTheme.labelLarge?.copyWith(color: theme.cardColor),
         ),
-        icon: const Icon(Icons.add, color: Colors.white),
+        icon: Icon(Icons.add, color: theme.primaryColorLight),
       ),
       body: BranaKanbanBoard(
           listPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          listDecoration: const BoxDecoration(color: Colors.white),
+          listDecoration: BoxDecoration(color: theme.primaryColorLight),
           itemDecorationWhileDragging: BoxDecoration(
-            color: Colors.white,
+            color: theme.primaryColorLight,
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
+                color: theme.shadowColor.withOpacity(0.2),
                 spreadRadius: 2,
                 blurRadius: 3,
               ),
@@ -65,7 +65,10 @@ class KanbanView extends StackedView<KanbanViewModel> {
           itemDragOnLongPress: true,
           addLastItemTargetHeightToTop: false,
           contentsWhenEmpty: Center(
-            child: Text('no_tasks_found'.tr()),
+            child: Text(
+              'no_tasks_found'.tr(),
+              style: theme.textTheme.headlineLarge,
+            ),
           ),
           listDividerOnLastChild: true,
           itemDivider: verticalSpaceSmall,
@@ -116,6 +119,7 @@ class _GroupHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
       child: Row(
@@ -127,15 +131,9 @@ class _GroupHeader extends StatelessWidget {
               color: Color(color),
               shape: BoxShape.circle,
             ),
-            child: Text(
-              count.toString(),
-              style: const TextStyle(color: Colors.white, fontSize: 12),
-            ),
+            child: Text(count.toString(), style: theme.textTheme.labelMedium),
           ),
-          Text(
-            name,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-          )
+          Text(name, style: theme.textTheme.headlineMedium)
         ],
       ),
     );

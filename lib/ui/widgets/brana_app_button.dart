@@ -29,6 +29,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -44,7 +45,7 @@ class AppButton extends StatelessWidget {
                 // padding: EdgeInsets.symmetric(
                 //     horizontal: busy ? 10 : 24, vertical: busy ? 10 : 16),
                 decoration: BoxDecoration(
-                  color: enabled ? const Color(0xff24A19C) : Colors.grey[300],
+                  color: enabled ? theme.primaryColor : theme.primaryColorLight,
                   borderRadius: BorderRadius.circular(borderRadius),
                 ),
                 child: !busy
@@ -55,8 +56,10 @@ class AppButton extends StatelessWidget {
                           if (icon != null) horizontalSpaceSmall,
                           Text(
                             title,
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              color: Colors.white,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: enabled
+                                  ? theme.primaryColorLight
+                                  : theme.primaryColor,
                             ),
                           )
                         ],

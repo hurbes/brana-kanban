@@ -23,11 +23,12 @@ class DatePickerSheet extends StackedView<DatePickerSheetModel> {
     DatePickerSheetModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Container(
       height: 415,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
@@ -38,17 +39,28 @@ class DatePickerSheet extends StackedView<DatePickerSheetModel> {
             alignment: Alignment.topRight,
             child: IconButton(
               onPressed: viewModel.close,
-              icon: const Icon(Icons.close, size: 30, color: Colors.grey),
+              icon: Icon(Icons.close, size: 30, color: theme.primaryColorLight),
             ),
           ),
           SizedBox(
             height: 300,
             width: screenWidth(context),
-            child: CupertinoDatePicker(
-              minimumDate: DateTime.now(),
-              initialDateTime: DateTime.now(),
-              mode: CupertinoDatePickerMode.dateAndTime,
-              onDateTimeChanged: viewModel.onDateChanged,
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                textTheme: CupertinoTextThemeData(
+                  dateTimePickerTextStyle: TextStyle(
+                    color: theme.primaryColorLight,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              child: CupertinoDatePicker(
+                backgroundColor: theme.cardColor,
+                minimumDate: DateTime.now(),
+                initialDateTime: DateTime.now(),
+                mode: CupertinoDatePickerMode.dateAndTime,
+                onDateTimeChanged: viewModel.onDateChanged,
+              ),
             ),
           ),
           AppButton(

@@ -39,11 +39,9 @@ class BranaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
-      defaultThemeMode: ThemeMode.light,
+      defaultThemeMode: ThemeMode.dark,
       darkTheme: BRANA_APP_DARK_THEME,
       lightTheme: BRANA_APP_LIGHT_THEME,
-      // darkTheme: locator<BranaAppThemeService>().darkTheme,
-      // lightTheme: locator<BranaAppThemeService>().lightTheme,
       builder: (context, regularTheme, darkTheme, themeMode) {
         return MaterialApp.router(
           title: 'Brana',

@@ -41,7 +41,7 @@ class _TaskBoardList extends ViewModelWidget<HomeViewModel> {
           Center(
             child: Text(
               'create_todo_list'.tr(),
-              style: const TextStyle(fontSize: 24),
+              style: theme.textTheme.titleLarge,
             ),
           ),
           Center(child: Image.asset('assets/home/empty_home.png')),

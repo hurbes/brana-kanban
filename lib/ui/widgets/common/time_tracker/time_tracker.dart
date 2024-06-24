@@ -15,13 +15,18 @@ class TimeTracker extends StackedView<TimeTrackerModel> {
     TimeTrackerModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Row(
       children: [
-        Icon(CupertinoIcons.stopwatch, size: 15, color: Colors.grey[600]),
+        Icon(
+          CupertinoIcons.stopwatch,
+          size: 15,
+          color: theme.primaryColorLight,
+        ),
         horizontalSpaceTiny,
         Text(
           viewModel.formattedTime,
-          style: const TextStyle(color: Colors.grey, fontSize: 12),
+          style: theme.textTheme.bodySmall,
         ),
       ],
     );

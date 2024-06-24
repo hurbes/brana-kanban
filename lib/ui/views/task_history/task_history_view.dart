@@ -21,6 +21,7 @@ class TaskHistoryView extends StackedView<TaskHistoryViewModel> {
     TaskHistoryViewModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,7 +32,6 @@ class TaskHistoryView extends StackedView<TaskHistoryViewModel> {
         title: Text(title),
         centerTitle: false,
         elevation: 0,
-        backgroundColor: Colors.white,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -44,11 +44,11 @@ class TaskHistoryView extends StackedView<TaskHistoryViewModel> {
             padding: const EdgeInsets.all(8),
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: theme.cardColor,
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: theme.primaryColorLight.withOpacity(0.1),
                   spreadRadius: 1,
                   blurRadius: 5,
                 ),
@@ -59,7 +59,7 @@ class TaskHistoryView extends StackedView<TaskHistoryViewModel> {
               children: [
                 _Title(task: task),
                 verticalSpaceSmall,
-                Text(task.description),
+                Text(task.description, style: theme.textTheme.bodyLarge),
                 verticalSpaceSmall,
                 _DurationRow(
                   startTime: viewModel.getTime(task.inProgressAt!),
@@ -90,29 +90,30 @@ class _DurationRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Row(
           children: [
             const Icon(
               CupertinoIcons.clock_fill,
-              size: 18,
+              size: 16,
               color: Colors.red,
             ),
             horizontalSpaceTiny,
-            Text(startTime)
+            Text(startTime, style: theme.textTheme.bodySmall)
           ],
         ),
-        const Text(' --- '),
+        Text(' --- ', style: theme.textTheme.bodySmall),
         Row(
           children: [
             const Icon(
               CupertinoIcons.clock_fill,
-              size: 18,
+              size: 16,
               color: Colors.green,
             ),
             horizontalSpaceTiny,
-            Text(endTime)
+            Text(endTime, style: theme.textTheme.bodySmall)
           ],
         ),
       ],
@@ -121,32 +122,27 @@ class _DurationRow extends StatelessWidget {
 }
 
 class _Title extends StatelessWidget {
-  const _Title({
-    super.key,
-    required this.task,
-  });
+  const _Title({required this.task});
 
   final Task task;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               CupertinoIcons.circle_fill,
               size: 14,
-              color: Colors.green,
+              color: theme.primaryColor,
             ),
             horizontalSpaceTiny,
             Text(
               task.title,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
+              style: theme.textTheme.headlineSmall,
             ),
           ],
         ),
@@ -170,19 +166,14 @@ class _Status extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 4,
-        horizontal: 8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Text(
-        status,
-        style: const TextStyle(color: Colors.white, fontSize: 12),
-      ),
+      child: Text(status, style: theme.textTheme.labelMedium),
     );
   }
 }

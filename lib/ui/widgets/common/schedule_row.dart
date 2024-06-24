@@ -22,6 +22,7 @@ class ScheduleRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Row(
@@ -33,9 +34,7 @@ class ScheduleRow extends StatelessWidget {
                   onTap: onSchedule,
                   child: Icon(
                     CupertinoIcons.calendar_badge_plus,
-                    color: isScheduled
-                        ? const Color(0xff24A19C)
-                        : Colors.grey[600],
+                    color: isScheduled ? theme.primaryColor : Colors.grey[600],
                   ),
                 ),
                 horizontalSpaceSmall,
@@ -43,8 +42,7 @@ class ScheduleRow extends StatelessWidget {
                   onTap: onReminder,
                   child: Icon(
                     CupertinoIcons.clock,
-                    color:
-                        isReminder ? const Color(0xff24A19C) : Colors.grey[600],
+                    color: isReminder ? theme.primaryColor : Colors.grey[600],
                   ),
                 ),
               ],
@@ -53,12 +51,12 @@ class ScheduleRow extends StatelessWidget {
               onTap: onSubmit,
               child: Icon(
                 CupertinoIcons.arrow_right_circle_fill,
-                color: enableSubmit ? Colors.green : Colors.grey[600],
+                color: enableSubmit ? theme.primaryColor : Colors.grey[600],
               ),
             )
           ],
         ),
-        Divider(color: Colors.grey[300]),
+        Divider(color: theme.primaryColorLight),
       ],
     );
   }
