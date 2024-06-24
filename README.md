@@ -29,48 +29,36 @@ Brana is a time-tracking and task management app designed to help users efficien
 1. **Kanban Board for Tasks:**
    - Users can create, edit, and move tasks between columns such as "To Do", "In Progress", and "Done".
    - The Kanban board provides a visual representation of tasks, making it easy to track progress and manage workloads.
-   - ![Kanban Board](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 15.52.12.png)
 
 2. **Timer Function:**
    - Allows users to start and stop tracking the time spent on each task.
    - Users can view the total time spent on tasks, helping them manage their time more effectively.
-   - ![Timer Function](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 15.52.52.png)
 
 3. **Task History:**
    - Maintains a history of completed tasks, including the time spent and the date of completion.
    - Users can review past tasks and analyze their productivity over time.
-   - ![Task History](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.02.24.png)
 
 4. **Comments:**
    - Users can comment on each task to provide updates or feedback.
    - This feature facilitates collaboration and communication among team members.
-   - ![Comments](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.03.28.png)
 
 5. **Translation:**
    - Supports multiple languages, making the app accessible to a global audience.
    - The app can be easily localized to cater to different regions.
-   - ![Translation](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.03.33.png)
 
 6. **Multi-Theme:**
    - Allows users to switch between different themes, enhancing the user experience and making the app visually appealing.
    - Users can choose a theme that suits their preferences or work environment.
-   - ![Multi-Theme](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.03.37.png)
 
 7. **Offline Support:**
    - Ensures that the app can function without an internet connection.
    - Data is synchronized when a connection is re-established, providing a seamless user experience.
-   - ![Offline Support](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.03.40.png)
 
 ### Performance
 - **Optimized for Performance:** The app is optimized to ensure fast loading times, smooth scrolling, and minimal use of memory and battery. This enhances the user experience and ensures that the app runs efficiently on all devices.
 
 ### Challenges
 - **API Limitations:** No external APIs were used as the provided API did not meet the intended functionalities of the app. Instead, local solutions were implemented to fulfill the requirements.
-
-### Screenshots
-![Screenshot 1](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.04.00.png)
-![Screenshot 2](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.04.48.png)
-![Screenshot 3](Simulator Screenshot - iPhone 15 Pro Max - 2024-06-24 at 16.04.52.png)
 
 ### Technical Details
 - **State Management:** Stacked (Provider)
