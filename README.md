@@ -124,14 +124,14 @@ Brana is a time-tracking and task management app designed to help users efficien
 The Brana app is a well-designed, performant, and user-friendly time-tracking and task management application. It adheres to best practices in software development and provides a range of useful features to enhance user productivity and experience. With planned future improvements, Brana aims to become an even more powerful tool for managing tasks efficiently.
 
 ### Screenshots
-![Screenshot 1](showcase/1.png)
-![Screenshot 2](showcase/2.png)
-![Screenshot 3](showcase/3.png)
-![Screenshot 4](showcase/4.png)
-![Screenshot 5](showcase/5.png)
-![Screenshot 6](showcase/6.png)
-![Screenshot 7](showcase/7.png)
-![Screenshot 8](showcase/8.png)
-![Screenshot 9](showcase/9.png)
-![Screenshot 10](showcase/10.png)
+<img src="showcase/1.png" alt="drawing" width="200"/>
+<img src="showcase/2.png" alt="drawing" width="200"/>
+<img src="showcase/3.png" alt="drawing" width="200"/>
+<img src="showcase/4.png" alt="drawing" width="200"/>
+<img src="showcase/5.png" alt="drawing" width="200"/>
+<img src="showcase/6.png" alt="drawing" width="200"/>
+<img src="showcase/7.png" alt="drawing" width="200"/>
+<img src="showcase/8.png" alt="drawing" width="200"/>
+<img src="showcase/9.png" alt="drawing" width="200"/>
+<img src="showcase/10.png" alt="drawing" width="200"/>
 ---
