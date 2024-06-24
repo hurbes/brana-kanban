@@ -3,11 +3,12 @@ import 'package:brana/core/database/models/app_models.dart';
 import 'package:floor/floor.dart';
 
 const _query = '''
-SELECT tt.*, COUNT(tct.taskId) AS commentsCount
+  SELECT tt.*, COUNT(tct.taskId) AS commentsCount
 FROM task_table tt
-LEFT JOIN task_comments_table tct ON tt.id = tct.taskId AND tt.boardId = :boardId
+LEFT JOIN task_comments_table tct ON tt.id = tct.taskId
+WHERE tt.boardId = :boardId 
 GROUP BY tt.id;
-''';
+      ''';
 
 @dao
 abstract class TasksDao {

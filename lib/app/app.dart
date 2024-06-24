@@ -12,7 +12,6 @@ import 'package:brana/ui/views/intro/intro_view.dart';
 import 'package:brana/ui/bottom_sheets/add_task_board/add_task_board_sheet.dart';
 import 'package:brana/ui/views/settings/settings_view.dart';
 import 'package:brana/ui/views/kanban/kanban_view.dart';
-import 'package:brana/ui/views/task/task_view.dart';
 import 'package:brana/core/services/analytics_service.dart';
 import 'package:brana/core/services/notification_service.dart';
 import 'package:brana/ui/bottom_sheets/add_task/add_task_sheet.dart';
@@ -32,7 +31,6 @@ import 'package:stacked_themes/stacked_themes.dart';
     MaterialRoute(page: IntroView),
     MaterialRoute(page: SettingsView),
     MaterialRoute(page: KanbanView),
-    MaterialRoute(page: TaskView),
     MaterialRoute(page: ParentView),
     MaterialRoute(page: HistoryView),
     MaterialRoute(page: HistoryView),

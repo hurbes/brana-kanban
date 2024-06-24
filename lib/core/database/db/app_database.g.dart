@@ -330,7 +330,7 @@ class _$TasksDao extends TasksDao {
   @override
   Future<List<Task>> getTasks(int boardId) async {
     return _queryAdapter.queryList(
-        'SELECT tt.*, COUNT(tct.taskId) AS commentsCount FROM task_table tt LEFT JOIN task_comments_table tct ON tt.id = tct.taskId AND tt.boardId = ?1 GROUP BY tt.id;',
+        'SELECT tt.*, COUNT(tct.taskId) AS commentsCount FROM task_table tt LEFT JOIN task_comments_table tct ON tt.id = tct.taskId WHERE tt.boardId = ?1  GROUP BY tt.id;',
         mapper: (Map<String, Object?> row) => Task(id: row['id'] as int, boardId: row['boardId'] as int, title: row['title'] as String, description: row['description'] as String, priority: TaskPriority.values[row['priority'] as int], status: TaskStatus.values[row['status'] as int], commentsCount: row['commentsCount'] as int, enableReminder: (row['enableReminder'] as int) != 0, prevTaskId: row['prevTaskId'] as int?, nextTaskId: row['nextTaskId'] as int?, createdAt: _dateTimeConverter.decode(row['createdAt'] as int?), updatedAt: _dateTimeConverter.decode(row['updatedAt'] as int?), dueDate: _dateTimeConverter.decode(row['dueDate'] as int?), inProgressAt: _dateTimeConverter.decode(row['inProgressAt'] as int?), doneAt: _dateTimeConverter.decode(row['doneAt'] as int?)),
         arguments: [boardId]);
   }

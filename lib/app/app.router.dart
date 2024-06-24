@@ -5,56 +5,55 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i12;
-import 'package:stacked/stacked.dart' as _i11;
-import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
+import 'package:stacked/stacked.dart' as _i10;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 
-import '../ui/views/history/history_view.dart' as _i8;
+import '../ui/views/history/history_view.dart' as _i7;
 import '../ui/views/home/home_view.dart' as _i1;
 import '../ui/views/intro/intro_view.dart' as _i3;
 import '../ui/views/kanban/kanban_view.dart' as _i5;
-import '../ui/views/parent/parent_view.dart' as _i7;
+import '../ui/views/parent/parent_view.dart' as _i6;
 import '../ui/views/settings/settings_view.dart' as _i4;
 import '../ui/views/startup/startup_view.dart' as _i2;
-import '../ui/views/task/task_view.dart' as _i6;
-import '../ui/views/task_history/task_history_view.dart' as _i9;
+import '../ui/views/task_history/task_history_view.dart' as _i8;
 
 final stackedRouter =
-    StackedRouterWeb(navigatorKey: _i10.StackedService.navigatorKey);
+    StackedRouterWeb(navigatorKey: _i9.StackedService.navigatorKey);
 
-class StackedRouterWeb extends _i11.RootStackRouter {
-  StackedRouterWeb({_i12.GlobalKey<_i12.NavigatorState>? navigatorKey})
+class StackedRouterWeb extends _i10.RootStackRouter {
+  StackedRouterWeb({_i11.GlobalKey<_i11.NavigatorState>? navigatorKey})
       : super(navigatorKey);
 
   @override
-  final Map<String, _i11.PageFactory> pagesMap = {
+  final Map<String, _i10.PageFactory> pagesMap = {
     HomeViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.HomeView(),
       );
     },
     StartupViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.StartupView(),
       );
     },
     IntroViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.IntroView(),
       );
     },
     SettingsViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.SettingsView(),
       );
     },
     KanbanViewRoute.name: (routeData) {
       final args = routeData.argsAs<KanbanViewArgs>();
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i5.KanbanView(
           key: args.key,
@@ -63,29 +62,23 @@ class StackedRouterWeb extends _i11.RootStackRouter {
         ),
       );
     },
-    TaskViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i6.TaskView(),
-      );
-    },
     ParentViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.ParentView(),
+        child: const _i6.ParentView(),
       );
     },
     HistoryViewRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i8.HistoryView(),
+        child: const _i7.HistoryView(),
       );
     },
     TaskHistoryViewRoute.name: (routeData) {
       final args = routeData.argsAs<TaskHistoryViewArgs>();
-      return _i11.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i9.TaskHistoryView(
+        child: _i8.TaskHistoryView(
           key: args.key,
           boardId: args.boardId,
           title: args.title,
@@ -95,44 +88,40 @@ class StackedRouterWeb extends _i11.RootStackRouter {
   };
 
   @override
-  List<_i11.RouteConfig> get routes => [
-        _i11.RouteConfig(
+  List<_i10.RouteConfig> get routes => [
+        _i10.RouteConfig(
           HomeViewRoute.name,
           path: '/home-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           StartupViewRoute.name,
           path: '/',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           IntroViewRoute.name,
           path: '/intro-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           SettingsViewRoute.name,
           path: '/settings-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           KanbanViewRoute.name,
           path: '/kanban-view',
         ),
-        _i11.RouteConfig(
-          TaskViewRoute.name,
-          path: '/task-view',
-        ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           ParentViewRoute.name,
           path: '/parent-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           HistoryViewRoute.name,
           path: '/history-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           HistoryViewRoute.name,
           path: '/history-view',
         ),
-        _i11.RouteConfig(
+        _i10.RouteConfig(
           TaskHistoryViewRoute.name,
           path: '/task-history-view',
         ),
@@ -141,7 +130,7 @@ class StackedRouterWeb extends _i11.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomeView]
-class HomeViewRoute extends _i11.PageRouteInfo<void> {
+class HomeViewRoute extends _i10.PageRouteInfo<void> {
   const HomeViewRoute()
       : super(
           HomeViewRoute.name,
@@ -153,7 +142,7 @@ class HomeViewRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.StartupView]
-class StartupViewRoute extends _i11.PageRouteInfo<void> {
+class StartupViewRoute extends _i10.PageRouteInfo<void> {
   const StartupViewRoute()
       : super(
           StartupViewRoute.name,
@@ -165,7 +154,7 @@ class StartupViewRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.IntroView]
-class IntroViewRoute extends _i11.PageRouteInfo<void> {
+class IntroViewRoute extends _i10.PageRouteInfo<void> {
   const IntroViewRoute()
       : super(
           IntroViewRoute.name,
@@ -177,7 +166,7 @@ class IntroViewRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.SettingsView]
-class SettingsViewRoute extends _i11.PageRouteInfo<void> {
+class SettingsViewRoute extends _i10.PageRouteInfo<void> {
   const SettingsViewRoute()
       : super(
           SettingsViewRoute.name,
@@ -189,9 +178,9 @@ class SettingsViewRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.KanbanView]
-class KanbanViewRoute extends _i11.PageRouteInfo<KanbanViewArgs> {
+class KanbanViewRoute extends _i10.PageRouteInfo<KanbanViewArgs> {
   KanbanViewRoute({
-    _i12.Key? key,
+    _i11.Key? key,
     required String title,
     required int id,
   }) : super(
@@ -214,7 +203,7 @@ class KanbanViewArgs {
     required this.id,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   final String title;
 
@@ -227,20 +216,8 @@ class KanbanViewArgs {
 }
 
 /// generated route for
-/// [_i6.TaskView]
-class TaskViewRoute extends _i11.PageRouteInfo<void> {
-  const TaskViewRoute()
-      : super(
-          TaskViewRoute.name,
-          path: '/task-view',
-        );
-
-  static const String name = 'TaskView';
-}
-
-/// generated route for
-/// [_i7.ParentView]
-class ParentViewRoute extends _i11.PageRouteInfo<void> {
+/// [_i6.ParentView]
+class ParentViewRoute extends _i10.PageRouteInfo<void> {
   const ParentViewRoute()
       : super(
           ParentViewRoute.name,
@@ -251,8 +228,8 @@ class ParentViewRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.HistoryView]
-class HistoryViewRoute extends _i11.PageRouteInfo<void> {
+/// [_i7.HistoryView]
+class HistoryViewRoute extends _i10.PageRouteInfo<void> {
   const HistoryViewRoute()
       : super(
           HistoryViewRoute.name,
@@ -263,10 +240,10 @@ class HistoryViewRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.TaskHistoryView]
-class TaskHistoryViewRoute extends _i11.PageRouteInfo<TaskHistoryViewArgs> {
+/// [_i8.TaskHistoryView]
+class TaskHistoryViewRoute extends _i10.PageRouteInfo<TaskHistoryViewArgs> {
   TaskHistoryViewRoute({
-    _i12.Key? key,
+    _i11.Key? key,
     required int boardId,
     required String title,
   }) : super(
@@ -289,7 +266,7 @@ class TaskHistoryViewArgs {
     required this.title,
   });
 
-  final _i12.Key? key;
+  final _i11.Key? key;
 
   final int boardId;
 
@@ -301,9 +278,9 @@ class TaskHistoryViewArgs {
   }
 }
 
-extension RouterStateExtension on _i10.RouterService {
+extension RouterStateExtension on _i9.RouterService {
   Future<dynamic> navigateToHomeView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const HomeViewRoute(),
       onFailure: onFailure,
@@ -311,7 +288,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToStartupView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const StartupViewRoute(),
       onFailure: onFailure,
@@ -319,7 +296,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToIntroView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const IntroViewRoute(),
       onFailure: onFailure,
@@ -327,7 +304,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToSettingsView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const SettingsViewRoute(),
       onFailure: onFailure,
@@ -335,10 +312,10 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToKanbanView({
-    _i12.Key? key,
+    _i11.Key? key,
     required String title,
     required int id,
-    void Function(_i11.NavigationFailure)? onFailure,
+    void Function(_i10.NavigationFailure)? onFailure,
   }) async {
     return navigateTo(
       KanbanViewRoute(
@@ -350,16 +327,8 @@ extension RouterStateExtension on _i10.RouterService {
     );
   }
 
-  Future<dynamic> navigateToTaskView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
-    return navigateTo(
-      const TaskViewRoute(),
-      onFailure: onFailure,
-    );
-  }
-
   Future<dynamic> navigateToParentView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const ParentViewRoute(),
       onFailure: onFailure,
@@ -367,7 +336,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToHistoryView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const HistoryViewRoute(),
       onFailure: onFailure,
@@ -375,10 +344,10 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> navigateToTaskHistoryView({
-    _i12.Key? key,
+    _i11.Key? key,
     required int boardId,
     required String title,
-    void Function(_i11.NavigationFailure)? onFailure,
+    void Function(_i10.NavigationFailure)? onFailure,
   }) async {
     return navigateTo(
       TaskHistoryViewRoute(
@@ -391,7 +360,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithHomeView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const HomeViewRoute(),
       onFailure: onFailure,
@@ -399,7 +368,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithStartupView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const StartupViewRoute(),
       onFailure: onFailure,
@@ -407,7 +376,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithIntroView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const IntroViewRoute(),
       onFailure: onFailure,
@@ -415,7 +384,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithSettingsView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const SettingsViewRoute(),
       onFailure: onFailure,
@@ -423,10 +392,10 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithKanbanView({
-    _i12.Key? key,
+    _i11.Key? key,
     required String title,
     required int id,
-    void Function(_i11.NavigationFailure)? onFailure,
+    void Function(_i10.NavigationFailure)? onFailure,
   }) async {
     return replaceWith(
       KanbanViewRoute(
@@ -438,16 +407,8 @@ extension RouterStateExtension on _i10.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithTaskView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
-    return replaceWith(
-      const TaskViewRoute(),
-      onFailure: onFailure,
-    );
-  }
-
   Future<dynamic> replaceWithParentView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const ParentViewRoute(),
       onFailure: onFailure,
@@ -455,7 +416,7 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithHistoryView(
-      {void Function(_i11.NavigationFailure)? onFailure}) async {
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const HistoryViewRoute(),
       onFailure: onFailure,
@@ -463,10 +424,10 @@ extension RouterStateExtension on _i10.RouterService {
   }
 
   Future<dynamic> replaceWithTaskHistoryView({
-    _i12.Key? key,
+    _i11.Key? key,
     required int boardId,
     required String title,
-    void Function(_i11.NavigationFailure)? onFailure,
+    void Function(_i10.NavigationFailure)? onFailure,
   }) async {
     return replaceWith(
       TaskHistoryViewRoute(
