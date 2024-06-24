@@ -131,7 +131,7 @@ class _TagRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
-            '${task.priority.icon} ${task.priority.name}',
+            task.priority.name,
             style: theme.textTheme.labelSmall,
           ),
         ),
