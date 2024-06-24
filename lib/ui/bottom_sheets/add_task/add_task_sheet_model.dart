@@ -22,10 +22,6 @@ class AddTaskSheetModel extends FormViewModel with AppLogger {
   bool get isDateSelected => _dueDate != null;
   bool get isReminderSelected => _enableReminder;
 
-  bool get enableSubmit {
-    return hasTitle && hasDescription;
-  }
-
   TaskPriority _priority = TaskPriority.medium;
 
   TaskPriority get priority => _priority;
@@ -49,13 +45,19 @@ class AddTaskSheetModel extends FormViewModel with AppLogger {
     }
   }
 
-  Future<void> addTask({required int lastIndex, required int boardId}) async {
-    if (!enableSubmit) return;
+  Future<void> addTask({
+    required int lastIndex,
+    required int boardId,
+    required String titleValue,
+    required String descriptionValue,
+  }) async {
+    log.v('Adding Task $titleValue $descriptionValue');
+    if (titleValue.isEmpty || descriptionValue.isEmpty) return;
     await runBusyFuture(
       _taskService.addTask(
         boardId: boardId,
-        title: titleValue ?? '',
-        description: descriptionValue ?? '',
+        title: titleValue,
+        description: descriptionValue,
         dueDate: _dueDate,
         prevIndex: lastIndex,
         priority: priority,
@@ -91,5 +93,11 @@ class AddTaskSheetModel extends FormViewModel with AppLogger {
       title: titleValue ?? '',
       description: descriptionValue ?? '',
     );
+  }
+
+  @override
+  void setFormStatus() {
+    log.v('Setting Form Status $titleValue $descriptionValue');
+    super.setFormStatus();
   }
 }

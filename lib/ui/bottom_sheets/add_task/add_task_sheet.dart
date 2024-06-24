@@ -46,7 +46,6 @@ class AddTaskSheet extends StackedView<AddTaskSheetModel> with $AddTaskSheet {
           lastIndex: request.data['lastIndex'],
           titleController: titleController,
           descriptionController: descriptionController,
-          onComplete: () => completer!(SheetResponse(confirmed: true)),
         ),
       ),
     );
@@ -67,14 +66,12 @@ class AddTaskSheet extends StackedView<AddTaskSheetModel> with $AddTaskSheet {
 class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
   final int boardId;
   final int lastIndex;
-  final VoidCallback onComplete;
   final TextEditingController titleController;
   final TextEditingController descriptionController;
 
   const _TaskForm({
     required this.boardId,
     required this.lastIndex,
-    required this.onComplete,
     required this.titleController,
     required this.descriptionController,
   });
@@ -142,8 +139,11 @@ class _TaskForm extends ViewModelWidget<AddTaskSheetModel> {
                 onSubmit: () => viewModel.addTask(
                   lastIndex: lastIndex,
                   boardId: boardId,
+                  titleValue: titleController.text,
+                  descriptionValue: descriptionController.text,
                 ),
-                enableSubmit: viewModel.enableSubmit,
+                enableSubmit: titleController.text.isNotEmpty &&
+                    descriptionController.text.isNotEmpty,
               ),
               verticalSpaceSmall,
             ],

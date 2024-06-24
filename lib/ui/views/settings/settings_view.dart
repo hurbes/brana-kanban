@@ -67,21 +67,26 @@ class _LanguageSelection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('settings_language'.tr()),
-        DropdownButton<Locale>(
-          style: theme.textTheme.bodyLarge,
-          value: context.locale,
-          onChanged: (v) => context.setLocale(v!),
-          items: context.supportedLocales.map(
-            (language) {
-              return DropdownMenuItem(
-                value: language,
-                child: Text(
-                  _languageMap[language.languageCode]!,
-                  style: theme.textTheme.bodyLarge,
-                ),
-              );
-            },
-          ).toList(),
+        Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Theme.of(context).scaffoldBackgroundColor,
+          ),
+          child: DropdownButton<Locale>(
+            style: theme.textTheme.bodyLarge,
+            value: context.locale,
+            onChanged: (v) => context.setLocale(v!),
+            items: context.supportedLocales.map(
+              (language) {
+                return DropdownMenuItem(
+                  value: language,
+                  child: Text(
+                    _languageMap[language.languageCode]!,
+                    style: theme.textTheme.bodyLarge,
+                  ),
+                );
+              },
+            ).toList(),
+          ),
         ),
       ],
     );
